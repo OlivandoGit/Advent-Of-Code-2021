@@ -25,14 +25,11 @@ for s in signals:
     fives.remove(numbers["5"])
     numbers["2"] = fives[0]
 
-    inverted = {v:k for k,v in numbers.items()}
+    inverted = {"".join(sorted(list(v))):k for k,v in numbers.items()}
     output = ""
     for s2 in s[1]:
-        for p in ["".join(p) for p in permutations(s2)]:
-            if p in inverted:
-                output += inverted[p]
-                break
-
+        s2 = "".join(sorted(list(s2)))
+        output += inverted[s2]
     outputs.append(int(output))
 
 print(sum(outputs))

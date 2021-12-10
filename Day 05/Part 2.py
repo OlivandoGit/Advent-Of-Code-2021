@@ -2,15 +2,10 @@ coords = []
 maximum = 0
 with open("Input.txt", "r") as f:
     for line in f:
-        start, end = line.strip("\n").split(" -> ")
-        start = [int(x) for x in start.split(",")]
-        end = [int(x) for x in end.split(",")]
-
-        maximum = max(max(max(start), max(end)), maximum)
-
-        coords.append((start, end))
+        coords = [[[int(c) for c in coord.split(",")] for coord in line.strip("\n").split(" -> ")] for line in f]
     f.close()
 
+maximum = max([max([max(c) for c in coord]) for coord in coords])
 map = [[0 for j in range(maximum + 1)] for i in range(maximum + 1)]
 
 for coord in coords:
@@ -37,10 +32,4 @@ for coord in coords:
         for i, x in enumerate(x_range):
             map[y_range[i]][x] += 1
 
-count = 0
-for row in map:
-    for r in row:
-        if r >= 2:
-            count += 1
-
-print(count)
+print(sum([len([r for r in row if r >= 2]) for row in map]))

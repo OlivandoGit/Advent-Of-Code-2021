@@ -1,5 +1,3 @@
-from itertools import permutations
-
 signals = []
 
 with open("Input.txt", "r") as f:

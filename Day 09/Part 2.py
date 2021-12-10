@@ -4,7 +4,6 @@ def checkNeighbours(x, y):
     checked.append((x, y))
 
     size = 0
-
     if y - 1 >= 0 and map[y - 1][x] != 9 and (x, y - 1) not in checked:
         size += 1 + checkNeighbours(x, y - 1)
     if y + 1 < len(map) and map[y + 1][x] != 9 and (x, y + 1) not in checked:
@@ -18,9 +17,7 @@ def checkNeighbours(x, y):
 
 map = []
 with open("Input.txt", "r") as f:
-    lines = f.read().splitlines()
-    map = [[int(char) for char in list(line)] for line in lines]
-
+    map = [[int(char) for char in list(line.strip("\n"))] for line in f]
     f.close()
 
 lowest = []

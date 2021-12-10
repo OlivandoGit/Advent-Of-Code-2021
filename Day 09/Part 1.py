@@ -1,9 +1,7 @@
 map = []
 
 with open("Input.txt", "r") as f:
-    lines = f.read().splitlines()
-    map = [[int(char) for char in list(line)] for line in lines]
-
+    map = [[int(char) for char in list(line.strip("\n"))] for line in f]
     f.close()
 
 lowest = []

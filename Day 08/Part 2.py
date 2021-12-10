@@ -3,11 +3,7 @@ from itertools import permutations
 signals = []
 
 with open("Input.txt", "r") as f:
-    lines = f.read().splitlines()
-
-    for line in lines:
-        signals.append([x.split(" ") for x in line.split(" | ")])
-
+    signals = [[x.split(" ") for x in line.strip("\n").split(" | ")] for line in f]
     f.close()
 
 known = {2:"1", 3:"7", 4:"4", 7:"8"}

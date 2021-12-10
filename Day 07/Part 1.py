@@ -1,8 +1,7 @@
 pos = []
 
 with open("Input.txt", "r") as f:
-    pos = f.readline().strip("\n").split(",")
-    pos = [int(i) for i in pos]
+    pos = [int(i) for i in f.readline().strip("\n").split(",")]
 
     f.close()
 

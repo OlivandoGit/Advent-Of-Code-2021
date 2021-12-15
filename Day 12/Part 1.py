@@ -3,15 +3,8 @@ with open("Input.txt", "r") as f:
     for line in f:
         start, end = line.strip("\n").split("-")
 
-        if start not in caves:
-            caves[start] = [end]
-        else:
-            caves[start].append(end)
-
-        if end not in caves:
-            caves[end] = [start]
-        else:
-            caves[end].append(start)
+        caves.setdefault(start, []).append(end)
+        caves.setdefault(end, []).append(start)
 
     f.close()
 
